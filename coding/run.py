@@ -57,9 +57,9 @@ for root, dirs, files in os.walk("./"):
             replace_line(
                 file_name= file,
                 line_num_lotid= lotid_lineno,
-                text_lotid= lotid_val+stepid_val,
+                text_lotid= lotid + ' "' + lotid_val + stepid_val + '"\n',
                 line_num_resultsid= resultsid_lineno,
-                text_resultsid= resultsid_val+stepid_val
+                text_resultsid= resultsid + ' "' + resultsid_val + stepid_val + '"\n',
                 )
 
 
