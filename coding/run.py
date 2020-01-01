@@ -16,7 +16,6 @@ waferid = 'WaferID'
 waferid_val = ''
 waferid_lineno = 0
 
-filenotfound_flag = True
 #====================REPLACE function definition====================================================================
 def replace_line(file_name, line_num_lotid, text_lotid, line_num_resultsid, text_resultsid):
     lines = open(file_name, 'r').readlines()
@@ -71,8 +70,6 @@ for root, dirs, files in os.walk("./"):
 
             os.rename(file, output_filename)
 
-        if not file.endswith(file_extension):
-            filenotfound_flag = False
-
-if filenotfound_flag == False:
-    print("SORRY! There are no files found with extension -- .001")
+    """List comprehension for printing the message if there are no files with .001 file extension"""
+    if len([x for x in files if file_extension in x]) == 0:
+        print("SORRY! There are no files found with extension -- .001")
