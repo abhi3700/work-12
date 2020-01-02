@@ -7,11 +7,12 @@ The input task is as follows:
   <img src="images/work_12_input.png" alt="Work-12 Input" width="" height="">
 </p>
 
-* There are multiple files with name as random number.
-* There are different parameters in the input file
-	- `wafer id`
-	- `lot id`
-	- `step id`
+* There are multiple files generated from DIA Equipment with filename as random number.
+* The following parameters in the input file are to be extracted: 
+	- `LotID`
+	- `StepID`
+	- `ResultsID`
+	- `WaferID`
 
 
 
@@ -22,9 +23,9 @@ The output is as follows:
 </p>
 
 * The random named files will be renamed w.r.t nomenclature as `<lot_id>_<step_id>_<wafer_id>`. E.g: `F19310002.F1_POLY_WF01`
-* Also, the file contents of the respective file is changed as shown below:
-	- `Lot_ID`
-	- `Results_ID`
+* Also, the following parameters of the respective file is changed:
+	- `LotID`
+	- `ResultsID`
 
 ## Coding
 The pseudo code is as follows:
