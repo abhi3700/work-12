@@ -13,6 +13,7 @@ The input task is as follows:
 	- `StepID`
 	- `ResultsID`
 	- `WaferID`
+	- `DeviceID`
 
 
 
@@ -23,6 +24,7 @@ The output is as follows:
 </p>
 
 * The random named files will be renamed w.r.t nomenclature as `<lot_id>_<step_id>_<wafer_id>`. E.g: `F19310002.F1_POLY_WF01`
+* The modified & renamed files will be moved from src to dest directory i.e. `<device_id>/<step_id>/<lot_id>/YEDI1/`
 * Also, the following parameters of the respective file is changed:
 	- `LotID`
 	- `ResultsID`
@@ -30,11 +32,22 @@ The output is as follows:
 ## Coding
 The pseudo code is as follows:
 
-1. Walk in directory 
-2. Select the files with (*.001) extension (if available).
-3. Take the parameters & modify the content
-4. Write it back into the file
-5. Also, change the file name
+1. Walk in directory of the input files i.e. source directory.
+1. Open the files (in read mode) with __(*.001)__ extension (if available) in the given directory. E.g. `"./data"`
+1. Extract the respective parameters information - lineno, values,
+1. Modify the params - output_filename, new_deviceid, new_resultsid
+1. Write it back inside the file
+1. Create the folder(s) with `deviceid`, `lotid`, `stepid`, if doesn't exist.
+1. rename & move the files from src to des location. Use this func: `os.rename(src, des)`
+	- Use try & except exception handling in order to check if the modified file already exists.
+
+## Testing
+* [x] Case-1: simply put the data files into `"./coding/data"`
+	- Here, the files should be moved from src to des
+* [x] Case-2: put the data files into `"./coding/data"`, but don't delete the new folder, subfolders & the set of moved files
+	- Here, run repeatedly to see if there is any subfolder being created inside the "device" folder e.g. 'F19010001.F1POLY', 'F19010001.F1POLYPOLY'
+* [x] Case-3: put the data files into `"./coding/data"`, but delete the moved files from dest directory.
+	- This moves the modified & renamed file into the destination directory.
 
 ## Demo
-The demo video is available [here](./videos/work_12_demo.mp4)
+The demo video is available [here](./videos/work_12_demo.mp4) [to be modified as per `v0.2`]

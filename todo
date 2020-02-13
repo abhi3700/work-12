@@ -1,6 +1,0 @@
-Basically move the files to a new directory. If not available, then create it and move the newly named file.
-- device id
-  - lot id
-    - step id
-      - YEDI1
-        - "F19310002.F1_POLY_WF01"
